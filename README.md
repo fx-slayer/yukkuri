@@ -58,6 +58,10 @@ yukkuri -h
 
 #### 处理过程
 
+- 原始输入
+
+  ![icg](icg.jpg)
+
 - 设置阈值140
 
   `yukkuri -f icg.jpg -W 100 -H 100 -m tmp.jpg -t 140`
