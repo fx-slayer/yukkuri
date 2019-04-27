@@ -2,44 +2,26 @@ package main
 
 import (
 	"ascii"
+	"command"
 	"flag"
 	"log"
 	"logger"
 )
 
-type Cmd struct {
-	imgPath string
-	help bool
-	threshold int
-}
-
 func main(){
 	logger.InitLog()
-	cmd := parseCmd()
-	if cmd.help{
+	c := command.ParseCmd()
+	if c.Help{
 		flag.Usage()
 		return
 	}
-	if cmd.imgPath != ""{
-		log.Printf("load file [%s]" ,cmd.imgPath)
-		if err := ascii.TransFile(cmd.imgPath ,cmd.threshold);err != nil{
-			//log.Panicf("failed to converted the file into ascii %v" ,err)
+	if c.ImgPath != ""{
+		log.Printf("load file [%s]" ,c.ImgPath)
+		if err := ascii.TransFile(c.ImgPath ,c);err != nil{
 			log.Printf("failed to converted the file into ascii %v\n" ,err)
 		}
 	}else{
 		log.Println("no file is specified")
 		return
 	}
-}
-
-func parseCmd() *Cmd{
-	cmd := &Cmd{}
-	flag.StringVar(&cmd.imgPath ,"f" ,"" ,"specify an image file to transcode")
-	flag.BoolVar(&cmd.help ,"h" ,false ,"help")
-	flag.IntVar(&cmd.threshold ,"t" ,140 ,"set threshold for image grey processing")
-	flag.Parse()
-	flag.Usage = func() {
-		flag.PrintDefaults()
-	}
-	return cmd
 }

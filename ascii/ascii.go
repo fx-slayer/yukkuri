@@ -2,6 +2,7 @@ package ascii
 
 import (
 	"image"
+	"log"
 )
 
 type Ascii struct {
@@ -44,10 +45,11 @@ func NewAscii(grey *image.Gray) *Ascii{
 		Ch69:"┐",
 		Ch90:"┘",
 	}
+	log.Println(x ,y)
 	var m [][]string
-	for i:=0 ;i<y ;i++{
+	for i:=0 ;i<x ;i++{
 		mx := make([]string ,0)
-		for j:=0 ;j<x ;j++{
+		for j:=0 ;j<y ;j++{
 			mx = append(mx, " ")
 		}
 		m = append(m ,mx)
@@ -65,9 +67,8 @@ func (asc *Ascii)Convert(){
 	}
 
 	// go through
-	for i:=rtg.Min.Y+1 ;i<rtg.Max.Y-1 ;i++{
-		for j:=rtg.Min.X+1 ;j<rtg.Max.X-1 ;j++{
-			//log.Println("y x" ,j ,i)
+	for i:=rtg.Min.X+1 ;i<rtg.Max.X-1 ;i++{
+		for j:=rtg.Min.Y+1 ;j<rtg.Max.Y-1 ;j++{
 			asc.setChar(i ,j)
 		}
 	}

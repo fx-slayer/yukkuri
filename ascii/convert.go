@@ -1,6 +1,7 @@
 package ascii
 
 import (
+	"command"
 	"errors"
 	"image"
 	"image/jpeg"
@@ -13,12 +14,12 @@ import (
 type Yukurri struct {
 	Img 	image.Image
 	File	*os.File
-	Threshold int
+	Cmd 	command.Cmd
 }
 
-func TransFile(path string ,threshold int) error{
+func TransFile(path string ,cmd command.Cmd) error{
 	ykr := &Yukurri{
-		Threshold:threshold,
+		Cmd:cmd,
 	}
 	if f ,err := os.OpenFile(path ,os.O_RDONLY ,os.ModeTemporary);err != nil{
 		return err
@@ -47,21 +48,24 @@ func TransFile(path string ,threshold int) error{
 
 func handleImage(ykr *Yukurri){
 	rtg := ykr.Img.Bounds()
-	log.Println(ykr.File.Name() ,ykr.Img.Bounds())
+	log.Printf("image size %d*%d" ,ykr.Img.Bounds().Max.X ,ykr.Img.Bounds().Max.Y)
 	grey := image.NewGray(ykr.Img.Bounds())
+	
 	gh := NewGreyHandler()
 	for i:=rtg.Min.X ;i<rtg.Max.X ;i++  {
 		for j:=rtg.Min.Y ;j<rtg.Max.Y ;j++  {
-			grey.SetGray(gh.GreyFunc(i ,j ,ykr.Img ,ykr.Threshold))
+			grey.SetGray(gh.GreyFunc(i ,j ,ykr.Img ,ykr.Cmd.Threshold))
 		}
 	}
 	asc := NewAscii(grey)
 	asc.Convert()
 	w := NewImgWriter()
-	if err := w.writeImg("grey_tmp.jpg" ,grey);err != nil{
-		log.Panic(err)
+	if ykr.Cmd.TmpImgName != ""{
+		if err := w.writeImg(ykr.Cmd.TmpImgName ,grey);err != nil{
+			log.Panic(err)
+		}
 	}
-	if err := w.writeAscii("tmp.txt" ,asc.AsciiMap);err != nil{
+	if err := w.writeAscii(ykr.Cmd.Filename ,asc.AsciiMap);err != nil{
 		log.Panic(err)
 	}
 }
