@@ -4,7 +4,7 @@
 
 #### 依赖 
 
- 	[resize]( https://github.com/nfnt/resize)
+ 	[resize](https://github.com/nfnt/resize)
 
 
 #### 使用
@@ -50,9 +50,11 @@ yukkuri -h
   当输出失真较严重时，可使用`-m`保存灰度图像，观察图像状况，使用参数`-t`调整。
   参数`-t`为灰度处理的阈值，取值为0  -  255 ，默认140，取值越小，输出的空白越多。当输出的ASCII字符没有明显勾画出图像的轮廓时，应当适当调高该阈值。
 
-`yukkuri -f icg.jpg -W 100 -H 100 -m tmp.jpg -t 140`
+  `yukkuri -f icg.jpg -W 100 -H 100 -m tmp.jpg -t 140`
+
   ![ -t 140](tmp-140.jpg)
 
 
-`yukkuri -f icg.jpg -W 100 -H 100 -m tmp.jpg -t 160`
+  `yukkuri -f icg.jpg -W 100 -H 100 -m tmp.jpg -t 160`
+
   ![ -t 160](tmp-160.jpg)
