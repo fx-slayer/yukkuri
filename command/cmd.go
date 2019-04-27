@@ -22,8 +22,8 @@ func ParseCmd() Cmd{
 	flag.IntVar(&cmd.Threshold ,"t" ,140 ,"set threshold for image grey processing")
 	flag.StringVar(&cmd.Filename ,"n" ,"tmp.txt" ,"set output file name")
 	flag.StringVar(&cmd.TmpImgName ,"m" ,"" ,"save temporary image")
-	flag.IntVar(&cmd.AscHeight ,"H" ,100 ,"set ascii max height")
-	flag.IntVar(&cmd.AscWidth ,"W" ,100 ,"set ascii max width")
+	flag.IntVar(&cmd.AscHeight ,"H" ,-1 ,"set ascii max height")
+	flag.IntVar(&cmd.AscWidth ,"W" ,-1 ,"set ascii max width")
 	flag.Parse()
 	flag.Usage = func() {
 		flag.PrintDefaults()

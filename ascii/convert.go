@@ -3,6 +3,7 @@ package ascii
 import (
 	"command"
 	"errors"
+	"github.com/nfnt/resize"
 	"image"
 	"image/jpeg"
 	"image/png"
@@ -49,8 +50,11 @@ func TransFile(path string ,cmd command.Cmd) error{
 func handleImage(ykr *Yukurri){
 	rtg := ykr.Img.Bounds()
 	log.Printf("image size %d*%d" ,ykr.Img.Bounds().Max.X ,ykr.Img.Bounds().Max.Y)
+	if ykr.Cmd.AscWidth > 0 && ykr.Cmd.AscHeight > 0{
+		ykr.Img = resize.Resize(uint(ykr.Cmd.AscWidth) ,uint(ykr.Cmd.AscHeight) ,ykr.Img ,resize.Lanczos3)
+		log.Printf("resize image to %d*%d" ,ykr.Cmd.AscWidth ,ykr.Cmd.AscHeight)
+	}
 	grey := image.NewGray(ykr.Img.Bounds())
-	
 	gh := NewGreyHandler()
 	for i:=rtg.Min.X ;i<rtg.Max.X ;i++  {
 		for j:=rtg.Min.Y ;j<rtg.Max.Y ;j++  {
@@ -61,6 +65,7 @@ func handleImage(ykr *Yukurri){
 	asc.Convert()
 	w := NewImgWriter()
 	if ykr.Cmd.TmpImgName != ""{
+		log.Printf("output tmp image file [%s]" ,ykr.Cmd.TmpImgName)
 		if err := w.writeImg(ykr.Cmd.TmpImgName ,grey);err != nil{
 			log.Panic(err)
 		}
@@ -68,6 +73,7 @@ func handleImage(ykr *Yukurri){
 	if err := w.writeAscii(ykr.Cmd.Filename ,asc.AsciiMap);err != nil{
 		log.Panic(err)
 	}
+	log.Printf("output is complete [%s]" ,ykr.Cmd.Filename)
 }
 
 

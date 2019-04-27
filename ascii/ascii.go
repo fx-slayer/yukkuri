@@ -2,7 +2,6 @@ package ascii
 
 import (
 	"image"
-	"log"
 )
 
 type Ascii struct {
@@ -45,7 +44,6 @@ func NewAscii(grey *image.Gray) *Ascii{
 		Ch69:"┐",
 		Ch90:"┘",
 	}
-	log.Println(x ,y)
 	var m [][]string
 	for i:=0 ;i<x ;i++{
 		mx := make([]string ,0)

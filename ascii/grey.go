@@ -110,7 +110,6 @@ func (gh GreyHandler)GreyFunc(x int ,y int ,img image.Image ,threshold int)(int,
 	grey := color.Gray{
 		Y:val,
 	}
-	//log.Println(val)
 	return x ,y ,grey
 }
 
