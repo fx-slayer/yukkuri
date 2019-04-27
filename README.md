@@ -1,6 +1,8 @@
 ### yukkuri
 
 	由Golang实现的一个小功能，可将图片转为油库里(Ascii字符画)
+	
+	下载：https://github.com/nynicg/yukkuri/releases/download/v1.0/yukkuri.exe
 
 #### 依赖 
 
