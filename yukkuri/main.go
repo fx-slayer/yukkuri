@@ -17,9 +17,11 @@ func main(){
 	}
 	if c.ImgPath != ""{
 		log.Printf("load file [%s]" ,c.ImgPath)
-		if err := ascii.TransFile(c.ImgPath ,c);err != nil{
+		ykr := ascii.NewYukkuri(c)
+		if err := ykr.TransImgToGrey();err != nil{
 			log.Printf("failed to converted the file into ascii %v\n" ,err)
 		}
+		ykr.TransImgToAsc(ascii.NewAscii(ykr.GrayImg))
 	}else{
 		log.Println("no file is specified")
 		return

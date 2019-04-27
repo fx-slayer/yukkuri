@@ -23,6 +23,4 @@ func TestSlice(t *testing.T){
 		log.Println(si)
 		s = append(s, si)
 	}
-
-	//log.Println(s)
 }

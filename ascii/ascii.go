@@ -4,6 +4,11 @@ import (
 	"image"
 )
 
+type Asc11Converter interface {
+	Convert()
+	CharMap() [][]string
+}
+
 type Ascii struct {
 	X int
 	Y int
@@ -70,6 +75,10 @@ func (asc *Ascii)Convert(){
 			asc.setChar(i ,j)
 		}
 	}
+}
+
+func (asc *Ascii)CharMap() [][]string{
+	return asc.AsciiMap
 }
 
 func (asc *Ascii)setChar(x int ,y int){

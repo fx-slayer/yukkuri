@@ -9,6 +9,10 @@ import (
 	"strings"
 )
 
+type GreyFunction interface {
+	GreyFunc(x int ,y int ,img image.Image ,threshold int)(int, int, color.Gray)
+}
+
 type GreyHandler struct {
 	defaultRatio map[GreyColor]float32
 }
