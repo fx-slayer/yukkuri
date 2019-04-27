@@ -83,8 +83,8 @@ yukkuri -h
 
 #### 输出示例
 
-  - 命令：`yukkuri -f icg.jpg -W 150 -H 150` 
+- 命令：`yukkuri -f icg.jpg -W 150 -H 150` 
 
-  - 输出：[tmp.txt](tmp.txt)
+- 输出：[tmp.txt](tmp.txt)
 
   > 建议使用 notepad++ / Consolas 打开
