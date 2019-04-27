@@ -21,6 +21,8 @@ func (w ImgWriter)writeImg(filePath string ,img image.Image) error{
 	if f ,err := os.OpenFile(filePath ,os.O_WRONLY | os.O_CREATE ,os.ModePerm);err != nil{
 		return err
 	}else{
+		defer f.Close()
+
 		return jpeg.Encode(f ,img ,&jpeg.Options{Quality:100})
 	}
 }
@@ -29,6 +31,8 @@ func (w ImgWriter)writeAscii(filepath string ,asc [][]string) error{
 	if f ,err := os.OpenFile(filepath ,os.O_WRONLY | os.O_CREATE ,os.ModePerm);err != nil{
 		return err
 	}else{
+		defer f.Close()
+
 		buf := bytes.Buffer{}
 		for i:=0 ;i<len(asc[0]) ;i++{
 			for j:=0 ;j<len(asc) ;j++{
