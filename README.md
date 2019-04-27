@@ -2,7 +2,7 @@
 
 #### 概要
 
-由Golang实现的一个小功能，可将图片转为油库里(Ascii字符画)
+由Golang实现的一个小功能，可将图片转为油库里(Ascii字符画)，输出结果偏油库里风格
 
 - [下载](https://github.com/nynicg/yukkuri/releases)
 
