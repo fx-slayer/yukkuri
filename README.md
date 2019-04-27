@@ -76,3 +76,11 @@ yukkuri -h
   ![ -t 150](tmp-150.jpg)
 
   > 原图像的构造会很大程度地影响还原效果。线条越简单的图像越容易在较少的输出(<50*50)下被还原。
+
+#### 输出示例
+
+- 命令：`yukkuri -f icg.jpg -W 150 -H 150` 
+
+- 输出：[tmp.txt](tmp.txt)
+
+> 建议使用 notepad++ / Consolas 打开
