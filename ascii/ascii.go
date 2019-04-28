@@ -20,7 +20,7 @@ func NewAsc11Converter(grey *image.Gray ,yukkuriVer bool) Asc11Converter{
 	}
 }
 
-// 转出来的ascii字符画较普通，基本上是一个像素点对应一个字符。
+// 转出来的ascii字符画基本上是一个像素点对应一个字符。
 // 因此完整还原一幅图像需要较大的空间
 type Ascii struct {
 	X int
