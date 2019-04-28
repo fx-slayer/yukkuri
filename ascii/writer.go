@@ -5,14 +5,21 @@ import (
 	"image"
 	"image/jpeg"
 	"os"
+	"sync"
 )
 
 type ImgWriter struct {
 
 }
 
+var imgWriter ImgWriter
+var once sync.Once
+
 func NewImgWriter() ImgWriter{
-	return ImgWriter{}
+	once.Do(func() {
+		imgWriter = ImgWriter{}
+	})
+	return imgWriter
 }
 
 type ImageType int
