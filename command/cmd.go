@@ -12,6 +12,7 @@ type Cmd struct {
 	TmpImgName	string
 	AscWidth int
 	AscHeight int
+	Ykr	bool	// true -> 使用AsciiYukkuri处理 ,false -> 使用Ascii
 }
 
 
@@ -24,6 +25,8 @@ func ParseCmd() Cmd{
 	flag.StringVar(&cmd.TmpImgName ,"m" ,"" ,"save temporary image")
 	flag.IntVar(&cmd.AscHeight ,"H" ,-1 ,"set ascii max height")
 	flag.IntVar(&cmd.AscWidth ,"W" ,-1 ,"set ascii max width")
+	flag.BoolVar(&cmd.Ykr ,"y" ,false ,"make the output ascii more like yukkuri style,but more likely to be unrecognizable." +
+		"smaller -W -H are recommended when this option is enabled")
 	flag.Parse()
 	flag.Usage = func() {
 		flag.PrintDefaults()

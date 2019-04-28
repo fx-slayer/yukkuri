@@ -21,7 +21,7 @@ func main(){
 		if gray ,err := ykr.TransImgToGrey();err != nil{
 			log.Printf("failed to converted the file into ascii %v\n" ,err)
 		}else{
-			converter := ascii.NewAscii(gray)
+			converter := ascii.NewAsc11Converter(gray ,c.Ykr)
 			ykr.TransImgToAsc(converter)
 		}
 	}else{

@@ -8,9 +8,7 @@ import (
 	"sync"
 )
 
-type ImgWriter struct {
-
-}
+type ImgWriter struct {}
 
 var imgWriter ImgWriter
 var once sync.Once

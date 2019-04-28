@@ -55,9 +55,10 @@ func (ykr *Yukkuri)TransImgToGrey() (*image.Gray ,error){
 		log.Printf("image size %d*%d" ,ykr.Img.Bounds().Max.X ,ykr.Img.Bounds().Max.Y)
 
 		// resize
+
 		if ykr.Cmd.AscWidth > 0 && ykr.Cmd.AscHeight > 0{
 			ykr.Img = resize.Resize(uint(ykr.Cmd.AscWidth) ,uint(ykr.Cmd.AscHeight) ,ykr.Img ,resize.Lanczos3)
-			log.Printf("resize image to %d*%d" ,ykr.Cmd.AscWidth ,ykr.Cmd.AscHeight)
+			log.Printf("resize image to %d*%d\n" ,ykr.Cmd.AscWidth ,ykr.Cmd.AscHeight)
 		}
 
 		// gray handle

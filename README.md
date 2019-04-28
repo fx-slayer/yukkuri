@@ -37,6 +37,7 @@ yukkuri -h
         set output file name (default "tmp.txt")
   -t int
         set threshold for image grey processing (default 140)
+  -y    make the output ascii more like yukkuri style,but more likely to be unrecognizable.smaller -W -H are recommended when this option is enabled
 ```
 
 - 将图片转为ASCII码字符画
@@ -87,4 +88,7 @@ yukkuri -h
 
 - 输出：[tmp.txt](tmp.txt)
 
+- 启用`-y`参数使用另一套ASCII字符: `yukkuri -f icg.jpg -t 152 -n tmp_ykr.txt -W 70 -H 70 -y`
+
+- 输出：[tmp_ykr.txt](tmp_ykr.txt)
   > 建议使用 notepad++ / Consolas 打开

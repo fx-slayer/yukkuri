@@ -5,10 +5,23 @@ import (
 )
 
 type Asc11Converter interface {
+	// convert gray img to ascii
 	Convert()
+
 	CharMap() [][]string
 }
 
+// yukkuriVer : true -> 更倾向油库里风格，输出矩阵更小，但更容易失真
+func NewAsc11Converter(grey *image.Gray ,yukkuriVer bool) Asc11Converter{
+	if yukkuriVer{
+		return NewAsciiYukkuri(grey)
+	}else{
+		return NewAscii(grey)
+	}
+}
+
+// 转出来的ascii字符画较普通，基本上是一个像素点对应一个字符。
+// 因此完整还原一幅图像需要较大的空间
 type Ascii struct {
 	X int
 	Y int
