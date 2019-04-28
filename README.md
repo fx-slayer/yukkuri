@@ -86,9 +86,12 @@ yukkuri -h
 
 - 命令：`yukkuri -f icg.jpg -W 150 -H 150` 
 
-- 输出：[tmp.txt](tmp.txt)
+  输出：[tmp.txt](tmp.txt)
 
-- 启用`-y`参数使用另一套ASCII字符: `yukkuri -f icg.jpg -t 152 -n tmp_ykr.txt -W 70 -H 70 -y`
+- 启用`-y`参数使用另一套ASCII字符: `yukkuri -f icg.jpg -t 152 -n tmp_ykr.txt -y`
 
-- 输出：[tmp_ykr.txt](tmp_ykr.txt)
+  `-y`会将输入自动压缩3*3倍
+
+  输出：[tmp_ykr.txt](tmp_ykr.txt)
+
   > 建议使用 notepad++ / Consolas 打开
