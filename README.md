@@ -37,7 +37,7 @@ yukkuri -h
         set output file name (default "tmp.txt")
   -t int
         set threshold for image grey processing (default 140)
-  -y    make the output ascii more like yukkuri style,but more likely to be unrecognizable.smaller -W -H are recommended when this option is enabled
+  -y    make the output ascii more like yukkuri style,but more likely to be unrecognizable
 ```
 
 - 将图片转为ASCII码字符画
